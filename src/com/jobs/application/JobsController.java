@@ -28,7 +28,11 @@ public class JobsController {
 		Employee employee = new Employee(name, address, phone,  salaryPerMonth, PaymentFactory.createPaymentRateEmployee());
 		repository.addMember(employee);
 	}
-
+	
+	public void createVolunteer(String string, String string2, String string3, String string4) throws Exception{
+		Volunteer vol = new Volunteer(string, string2, string3, string4, PaymentFactory.createPaymentRateVolunteer());
+		repository.addMember(vol);
+	}
 
 	public void payAllEmployeers() {
 		ArrayList<AbsStaffMember> employeers = (ArrayList<AbsStaffMember>) repository.getAllMembers();
@@ -41,11 +45,6 @@ public class JobsController {
 		for(AbsStaffMember employee: employeers) emp += employee.toString() + "\n";		
 		
 		return emp;
-	}
-
-	public void createVolunteer(String string, String string2, String string3, String string4) throws Exception{
-		Volunteer vol = new Volunteer(string, string2, string3, string4, PaymentFactory.createPaymentRateVolunteer());
-		repository.addMember(vol);
 	}
 
 	@Override
