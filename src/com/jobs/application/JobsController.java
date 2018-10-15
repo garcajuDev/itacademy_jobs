@@ -1,6 +1,7 @@
 package com.jobs.application;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.jobs.domain.AbsStaffMember;
 import com.jobs.domain.Employee;
@@ -29,8 +30,8 @@ public class JobsController {
 		repository.addMember(employee);
 	}
 	
-	public void createVolunteer(String string, String string2, String string3, String string4) throws Exception{
-		Volunteer vol = new Volunteer(string, string2, string3, string4, PaymentFactory.createPaymentRateVolunteer());
+	public void createVolunteer(String name, String address, String phone, String description) throws Exception{
+		Volunteer vol = new Volunteer(name, address, phone, description, PaymentFactory.createPaymentRateVolunteer());
 		repository.addMember(vol);
 	}
 
@@ -40,15 +41,11 @@ public class JobsController {
 	}
 
 	public String getAllEmployees() {
-		ArrayList<AbsStaffMember> employeers = (ArrayList<AbsStaffMember>) repository.getAllMembers();
+		List<AbsStaffMember> employeers = repository.getAllMembers();
 		String emp = "";
 		for(AbsStaffMember employee: employeers) emp += employee.toString() + "\n";		
 		
 		return emp;
 	}
 
-	@Override
-	public String toString() {
-		return "JobsController [getAllEmployees()=" + getAllEmployees() + "]";
-	}
 }
